@@ -1,0 +1,35 @@
+@page "/patcher"
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.Extensions.Logging
+@inject ILogger<Patcher> Logger
+
+<h1>PatchingTime</h1>
+
+<EditForm Model="@patcherModel" OnValidSubmit="@HandleValidSubmit">
+    <InputText @bind-Value="patcherModel.FileDetails"/>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>
+    @message
+</p>
+
+@code {
+    private PatcherModel patcherModel = new() { FileDetails = "" };
+    private string? message;
+
+    private void HandleValidSubmit()
+    {
+        Logger.LogInformation("HandleValidSubmit called");
+
+        var result = PatcherIsolated.MMR.Patcher.ApplyPatch(patcherModel.FileDetails);
+
+        message = $"ApplyPatch returned a byteArray of size {result.Length} at {DateTime.Now}.";
+    }
+
+    public class PatcherModel
+    {
+        public String FileDetails { get; set; }
+    }
+}
