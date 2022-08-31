@@ -18,5 +18,9 @@
   <ItemGroup>
     <BlazorWebAssemblyLazyLoad Include="PatcherIsolated.dll" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="App.razor" />
+  </ItemGroup>
 
 </Project>

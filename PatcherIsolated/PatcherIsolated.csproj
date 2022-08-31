@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RiderProjects\mm-rando\MMR.Randomizer\MMR.Randomizer.csproj" />
+    <ProjectReference Include="..\..\mm-rando\MMR.Randomizer\MMR.Randomizer.csproj" />
   </ItemGroup>
 
 </Project>
